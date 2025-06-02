@@ -1,0 +1,19 @@
+.header-toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 40px;
+  margin-right: 12px;
+}
+
+.company-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}

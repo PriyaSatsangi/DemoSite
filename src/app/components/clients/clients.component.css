@@ -1,0 +1,30 @@
+.section-title {
+  text-align: center;
+  margin: 30px 0;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.client-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.client-card {
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.client-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.client-card img {
+  height: 120px;
+  object-fit: contain;
+  padding: 10px;
+}

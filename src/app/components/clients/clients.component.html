@@ -1,0 +1,14 @@
+<app-header></app-header>
+
+<h2 class="section-title">Our Valued Clients</h2>
+<div class="client-grid">
+  <mat-card *ngFor="let client of clients"
+            class="client-card"
+            (click)="openDetail(client)"
+            matRipple>
+    <img mat-card-image [src]="client.logo" [alt]="client.name" />
+    <mat-card-title>{{ client.name }}</mat-card-title>
+  </mat-card>
+</div>
+
+<app-footer></app-footer>
