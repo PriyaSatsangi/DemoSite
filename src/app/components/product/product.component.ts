@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core'; // <-- add OnInit import
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
@@ -9,11 +9,18 @@ import { FooterComponent } from '../footer/footer.component';
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatDialogModule, HeaderComponent, FooterComponent],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatDialogModule,
+    HeaderComponent,
+    FooterComponent,
+  ],
   templateUrl: './product.component.html',
-  styleUrl: './product.component.css'
+  styleUrl: './product.component.css',
 })
-export class ProductComponent {
+export class ProductComponent implements OnInit {
+  // <-- add OnInit here
 
   constructor(private dialog: MatDialog) {}
 
@@ -49,14 +56,26 @@ export class ProductComponent {
     {
       title: 'Data Localization',
       description: `Ensures sensitive data is stored within domestic boundaries per regulatory mandates, with secure access controls.`,
-    }
+    },
   ];
+
+  shakingIndex: number | null = null; // <-- new property for shake
+
+  ngOnInit() {
+    setInterval(() => {
+      this.shakingIndex = Math.floor(Math.random() * this.products.length);
+
+      setTimeout(() => {
+        this.shakingIndex = null;
+      }, 2000); // shake duration matches CSS animation time
+    }, 4000);
+  }
 
   openDetail(product: any) {
     this.dialog.open(ProductDetailComponent, {
       data: product,
       width: '500px',
-      panelClass: 'product-dialog'
+      panelClass: 'product-dialog',
     });
   }
 }

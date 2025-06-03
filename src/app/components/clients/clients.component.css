@@ -5,26 +5,66 @@
   font-weight: bold;
 }
 
-.client-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
-  padding: 20px;
+/* Container to hide overflow */
+.client-slider-container {
+  overflow: hidden;
+  width: 100%;
+  padding: 20px 0;
+  background: #f9f9f9;
+  position: relative;
 }
 
+/* Track that scrolls left infinitely */
+.client-slider-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 30s linear infinite;
+}
+
+/* Pause animation on hover or click */
+.client-slider-container:hover .client-slider-track,
+.client-slider-container:active .client-slider-track {
+  animation-play-state: paused;
+}
+
+/* Client card styling */
 .client-card {
+  flex: 0 0 auto;
+  width: 220px;
+  margin: 0 10px;
   text-align: center;
-  cursor: pointer;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  padding: 10px;
 }
 
 .client-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
 .client-card img {
-  height: 120px;
+  height: 100px;
   object-fit: contain;
   padding: 10px;
+}
+
+.client-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 8px;
+  color: #333;
+}
+
+/* Scroll animation */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
