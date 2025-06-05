@@ -1,10 +1,105 @@
 <app-header></app-header>
 
-<div class="home-container">
-  <h1>Welcome to Acutec Global Services</h1>
-  <p>Delivering Innovative IT and Business Solutions</p>
+<!-- Circular Scroll Indicator -->
+<div class="circular-scroll-indicator">
+  <div
+    *ngFor="let section of sections; let i = index"
+    class="scroll-part"
+    [class.active]="activeSection === section.id"
+    (mouseenter)="hoveredSection = section.id"
+    (mouseleave)="hoveredSection = null"
+    (click)="scrollToSection(section.id)"
+    [ngStyle]="{
+      transform: 'rotate(' + angles[i] + 'deg) translateX(128px)',
+      '--angle': angles[i] + 'deg'
+    }"
+  >
+    <!-- Inner wrapper to undo rotation -->
+    <div class="scroll-part-inner">
+      <span style="font-size: 1.3rem">&#9679;</span>
+      <div class="label-bar" *ngIf="hoveredSection === section.id">
+        {{ section.label }}
+      </div>
+    </div>
+  </div>
+</div>
 
-  <img src="assets/finance-animation.gif" alt="Finance Animation" class="finance-animation" />
+<div class="home-container">
+  <section id="about" class="slide">
+    <h2>About Us</h2>
+    <p>
+      We provide top-notch IT services to help businesses grow and innovate.
+    </p>
+    <img src="assets/about.jpg" alt="About Us" />
+  </section>
+
+  <section id="company" class="slide">
+    <h2>Our Company</h2>
+    <p>We specialize in tailored enterprise solutions.</p>
+    <img src="assets/company.jpg" alt="Company" />
+  </section>
+
+  <section id="client" class="slide">
+    <h2>Client Speak</h2>
+    <p>Our clients trust and love our services. Here's what they say.</p>
+    <img src="assets/client.jpg" alt="Clients" />
+  </section>
+
+  <!-- contact us section -->
+  <section id="contact" class="slide contact-section">
+    <div class="contact-container">
+      <!-- LEFT SIDE: Social Media + Contact -->
+      <div class="contact-left">
+        <h2>Contact Us</h2>
+        <p class="company-description">
+          <strong>Acutec Global Services LLP</strong> is one of the most
+          preferred software solution providers, headquartered in Noida, and
+          registered office in New Delhi, India. In the last 13 years, we have
+          emerged as an indispensable business partner to many of our clients by
+          offering customized solutions.
+        </p>
+
+        <div class="contact-info" style="margin-top: 81px">
+          <p><strong>Phone:</strong> 0120-4217849</p>
+          <p><strong>Email:</strong> info&#64;acumentechnologies.co.in</p>
+        </div>
+
+        <h4 style="margin-left: -81px; margin-top: 81px">Follow Us</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:info@acumentechnologies.co.in"
+            ><i class="fas fa-envelope"></i
+          ></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE: Services + Products -->
+      <div class="contact-right">
+        <div class="info-group">
+          <h4>Services</h4>
+          <ul>
+            <li>Payment Gateway Implementation</li>
+            <li>Annual Technical Support</li>
+          </ul>
+        </div>
+
+        <div class="info-group">
+          <h4>Products</h4>
+          <ul>
+            <li>Payment Middleware NGRTGS</li>
+            <li>Payment Middleware NACH H2H</li>
+            <li>Payment Hub with Liquidity Manager</li>
+            <li>Anti-Money Laundering Solution</li>
+            <li>Message Manager</li>
+            <li>Crypto Tool Kits</li>
+            <li>Bulk Upload Automation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 
 <app-footer></app-footer>
