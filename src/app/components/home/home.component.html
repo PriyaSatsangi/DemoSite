@@ -2,18 +2,12 @@
 
 <!-- Circular Scroll Indicator -->
 <div class="circular-scroll-indicator">
-  <div
-    *ngFor="let section of sections; let i = index"
-    class="scroll-part"
-    [class.active]="activeSection === section.id"
-    (mouseenter)="hoveredSection = section.id"
-    (mouseleave)="hoveredSection = null"
-    (click)="scrollToSection(section.id)"
-    [ngStyle]="{
+  <div *ngFor="let section of sections; let i = index" class="scroll-part" [class.active]="activeSection === section.id"
+    (mouseenter)="hoveredSection = section.id" (mouseleave)="hoveredSection = null"
+    (click)="scrollToSection(section.id)" [ngStyle]="{
       transform: 'rotate(' + angles[i] + 'deg) translateX(128px)',
       '--angle': angles[i] + 'deg'
-    }"
-  >
+    }">
     <!-- Inner wrapper to undo rotation -->
     <div class="scroll-part-inner">
       <span style="font-size: 1.3rem">&#9679;</span>
@@ -33,11 +27,30 @@
     <img src="assets/about.jpg" alt="About Us" />
   </section>
 
-  <section id="company" class="slide">
+  <!-- <section id="company" class="slide">
     <h2>Our Company</h2>
-    <p>We specialize in tailored enterprise solutions.</p>
-    <img src="assets/company.jpg" alt="Company" />
-  </section>
+    <p>For more than a decade, We, at Acutec have developed smart, technology-enabled solutions to solve our client’s toughest challenges, demonstrating our commitment to excellence and passion for exceeding expectations. Our team members are having deep technology & domain knowledge for integrating SWIFT, NEFT, RTGS, NGRTGS, Host-to-Host NACH, ABPS, Mandate Management System, AML with Financial Intelligence Unit Reporting System, Crypto-tool (which appends UMAC to transaction messages ) with bank's back office system) using holistic approach for transaction management in terms of error handling, liquidity management, data localization with ease of reconciliation.</p>
+    <img src="9.jpg" alt="Company" />
+  </section> -->
+
+  <section id="company" class="slide">
+  <h2>Our Company</h2>
+  <p>
+    For more than a decade, We, at Acutec have developed smart, technology-enabled solutions to solve our client’s toughest challenges...
+  </p>
+
+  <div class="image-overlay-container">
+    <img src="9.jpg" alt="Company" />
+    <div class="overlay-text">
+      <p>
+        Acutec is powered with experienced delivery management, expert architects, ardent designers, and zealous developers who share a single passion to make robust and user-friendly applications with innovative approaches.<br><br>
+        Acutec has a proven track record of developing and delivering enterprise applications on time with quality.<br><br>
+        Our agency can only be as strong as our people. Our team has owned businesses, built products, consulted, and competed professionally when it comes to deliverables.
+      </p>
+    </div>
+  </div>
+</section>
+
 
   <section id="client" class="slide">
     <h2>Client Speak</h2>
@@ -68,9 +81,7 @@
         <div class="social-icons">
           <a href="#"><i class="fab fa-twitter"></i></a>
           <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          <a href="mailto:info@acumentechnologies.co.in"
-            ><i class="fas fa-envelope"></i
-          ></a>
+          <a href="mailto:info@acumentechnologies.co.in"><i class="fas fa-envelope"></i></a>
           <a href="#"><i class="fab fa-facebook-f"></i></a>
         </div>
       </div>
