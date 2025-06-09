@@ -118,15 +118,29 @@
   </section> -->
   <section id="client" class="slide client-speak-section">
     <h2 class="client-title">Client Speak</h2>
+    <!-- just below <h2>
+    <p style="color: red">{{ currentIndex }}</p> -->
+
     <div class="carousel">
       <div
         class="carousel-item"
         *ngFor="let testimonial of testimonials; let i = index"
         [class.active]="i === currentIndex"
       >
-        <div class="testimonial-card">
-          <h3>{{ testimonial.name }}</h3>
-          <p>{{ testimonial.text }}</p>
+        <div
+          class="carousel-item"
+          *ngFor="let testimonial of testimonials; let i = index"
+          [class.active]="i === currentIndex"
+        >
+          <div class="testimonial-card">
+            <div class="client-photo">
+              <img [src]="testimonial.photo" alt="{{ testimonial.name }}" />
+            </div>
+            <div class="client-content">
+              <h3>{{ testimonial.name }}</h3>
+              <p>{{ testimonial.text }}</p>
+            </div>
+          </div>
         </div>
       </div>
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { CommonModule } from '@angular/common';
@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   angles = [-10, 37.5, 85, 132.5, 180]; // Clock positions: 12, 2, 4, 6
 
   sections = [
@@ -40,24 +40,55 @@ export class HomeComponent {
       }
     }
   }
+  ngOnInit() {
+    setInterval(() => {
+      this.nextSlide();
+    }, 5000); // 10000 ms = 10 seconds
+  }
 
   // client
+  // testimonials = [
+  //   {
+  //     name: 'John Doe',
+  //     text: 'Acutec helped us modernize our workflow effortlessly. Highly recommended!',
+  //     photo: 'assets/client1.jpg',
+  //   },
+  //   {
+  //     name: 'Jane Smith',
+  //     text: 'Top-tier support and cutting-edge solutions. Fantastic team!',
+  //     photo: 'assets/client2.jpg',
+  //   },
+  //   {
+  //     name: 'Bob Johnson',
+  //     text: 'Reliable, scalable, and always ahead of the curve. Great service!',
+  //     photo: 'assets/client3.jpg',
+  //   },
+  //   {
+  //     name: 'Alice Brown',
+  //     text: 'Their team truly understands client needs and delivers fast.',
+  //     photo: 'assets/client4.jpg',
+  //   },
+  // ];
   testimonials = [
     {
       name: 'John Doe',
       text: 'Acutec helped us modernize our workflow effortlessly. Highly recommended!',
+      photo: 'https://randomuser.me/api/portraits/men/32.jpg',
     },
     {
       name: 'Jane Smith',
       text: 'Top-tier support and cutting-edge solutions. Fantastic team!',
+      photo: 'https://randomuser.me/api/portraits/women/44.jpg',
     },
     {
       name: 'Bob Johnson',
       text: 'Reliable, scalable, and always ahead of the curve. Great service!',
+      photo: 'https://randomuser.me/api/portraits/men/54.jpg',
     },
     {
       name: 'Alice Brown',
       text: 'Their team truly understands client needs and delivers fast.',
+      photo: 'https://randomuser.me/api/portraits/women/68.jpg',
     },
   ];
 
