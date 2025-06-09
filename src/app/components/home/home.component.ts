@@ -11,12 +11,13 @@ import { CommonModule } from '@angular/common';
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  angles = [-10, 55, 115, 180]; // Clock positions: 12, 2, 4, 6
+  angles = [-10, 37.5, 85, 132.5, 180]; // Clock positions: 12, 2, 4, 6
 
   sections = [
     { id: 'about', label: 'About Us' },
     { id: 'company', label: 'Our Company' },
     { id: 'client', label: 'Client Speak' },
+    { id: 'team', label: 'Mission' },
     { id: 'contact', label: 'Contact' },
   ];
   activeSection = '';
@@ -38,5 +39,37 @@ export class HomeComponent {
         this.activeSection = section.id;
       }
     }
+  }
+
+  // client
+  testimonials = [
+    {
+      name: 'John Doe',
+      text: 'Acutec helped us modernize our workflow effortlessly. Highly recommended!',
+    },
+    {
+      name: 'Jane Smith',
+      text: 'Top-tier support and cutting-edge solutions. Fantastic team!',
+    },
+    {
+      name: 'Bob Johnson',
+      text: 'Reliable, scalable, and always ahead of the curve. Great service!',
+    },
+    {
+      name: 'Alice Brown',
+      text: 'Their team truly understands client needs and delivers fast.',
+    },
+  ];
+
+  currentIndex = 0;
+
+  nextSlide() {
+    this.currentIndex = (this.currentIndex + 1) % this.testimonials.length;
+  }
+
+  prevSlide() {
+    this.currentIndex =
+      (this.currentIndex - 1 + this.testimonials.length) %
+      this.testimonials.length;
   }
 }

@@ -2,12 +2,18 @@
 
 <!-- Circular Scroll Indicator -->
 <div class="circular-scroll-indicator">
-  <div *ngFor="let section of sections; let i = index" class="scroll-part" [class.active]="activeSection === section.id"
-    (mouseenter)="hoveredSection = section.id" (mouseleave)="hoveredSection = null"
-    (click)="scrollToSection(section.id)" [ngStyle]="{
+  <div
+    *ngFor="let section of sections; let i = index"
+    class="scroll-part"
+    [class.active]="activeSection === section.id"
+    (mouseenter)="hoveredSection = section.id"
+    (mouseleave)="hoveredSection = null"
+    (click)="scrollToSection(section.id)"
+    [ngStyle]="{
       transform: 'rotate(' + angles[i] + 'deg) translateX(128px)',
       '--angle': angles[i] + 'deg'
-    }">
+    }"
+  >
     <!-- Inner wrapper to undo rotation -->
     <div class="scroll-part-inner">
       <span style="font-size: 1.3rem">&#9679;</span>
@@ -18,13 +24,60 @@
   </div>
 </div>
 
+<!-- Floating Social Media Icons -->
+<div class="floating-social-icons">
+  <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+  <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+  <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+  <a href="mailto:info@acumentechnologies.co.in"
+    ><i class="fas fa-envelope"></i
+  ></a>
+</div>
+
 <div class="home-container">
-  <section id="about" class="slide">
-    <h2>About Us</h2>
-    <p>
-      We provide top-notch IT services to help businesses grow and innovate.
-    </p>
-    <img src="assets/about.jpg" alt="About Us" />
+  <!-- about section  -->
+  <section id="about" class="slide about-section">
+    <div class="about-grid">
+      <!-- Main image (left half) -->
+      <div class="about-img main-img">
+        <div class="hover-text">
+          <h3>Heading 1</h3>
+          <p>
+            We provide top-notch IT services,We make Technology work for you
+            Synchronised with latest cutting edge technology and inventions.
+            Application certified by CERT-IN Empanelled Auditors .
+          </p>
+        </div>
+      </div>
+
+      <!-- Four smaller images (right half) -->
+      <div class="about-subgrid">
+        <div class="about-img small-img img1">
+          <div class="hover-text">
+            <h3>Heading 2</h3>
+            <p>Smart Financial Integrations</p>
+          </div>
+        </div>
+        <div class="about-img small-img img2">
+          <div class="hover-text">
+            <h3>Heading 3</h3>
+            <p>Real-time Transaction Monitoring</p>
+          </div>
+        </div>
+        <div class="about-img small-img img3">
+          <div class="hover-text">
+            <h3>Heading 4</h3>
+            <p>Secure Payment Solutions</p>
+          </div>
+        </div>
+        <div class="about-img small-img img4">
+          <div class="hover-text">
+            <h3>Heading 5</h3>
+            <p>Reliable AML Systems</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- <section id="company" class="slide">
@@ -34,32 +87,65 @@
   </section> -->
 
   <section id="company" class="slide">
-  <h2>Our Company</h2>
-  <p>
-    For more than a decade, We, at Acutec have developed smart, technology-enabled solutions to solve our client’s toughest challenges...
-  </p>
+    <h2>Our Company</h2>
+    <p>
+      For more than a decade, We, at Acutec have developed smart,
+      technology-enabled solutions to solve our client’s toughest challenges...
+    </p>
 
-  <div class="image-overlay-container">
-    <img src="9.jpg" alt="Company" />
-    <div class="overlay-text">
-      <p>
-        Acutec is powered with experienced delivery management, expert architects, ardent designers, and zealous developers who share a single passion to make robust and user-friendly applications with innovative approaches.<br><br>
-        Acutec has a proven track record of developing and delivering enterprise applications on time with quality.<br><br>
-        Our agency can only be as strong as our people. Our team has owned businesses, built products, consulted, and competed professionally when it comes to deliverables.
-      </p>
+    <div class="image-overlay-container">
+      <img src="9.jpg" alt="Company" />
+      <div class="overlay-text">
+        <p>
+          Acutec is powered with experienced delivery management, expert
+          architects, ardent designers, and zealous developers who share a
+          single passion to make robust and user-friendly applications with
+          innovative approaches.<br /><br />
+          Acutec has a proven track record of developing and delivering
+          enterprise applications on time with quality.<br /><br />
+          Our agency can only be as strong as our people. Our team has owned
+          businesses, built products, consulted, and competed professionally
+          when it comes to deliverables.
+        </p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-
-  <section id="client" class="slide">
+  <!-- <section id="client" class="slide">
     <h2>Client Speak</h2>
     <p>Our clients trust and love our services. Here's what they say.</p>
     <img src="assets/client.jpg" alt="Clients" />
+  </section> -->
+  <section id="client" class="slide client-speak-section">
+    <h2 class="client-title">Client Speak</h2>
+    <div class="carousel">
+      <div
+        class="carousel-item"
+        *ngFor="let testimonial of testimonials; let i = index"
+        [class.active]="i === currentIndex"
+      >
+        <div class="testimonial-card">
+          <h3>{{ testimonial.name }}</h3>
+          <p>{{ testimonial.text }}</p>
+        </div>
+      </div>
+
+      <button class="nav prev" (click)="prevSlide()">&#10094;</button>
+      <button class="nav next" (click)="nextSlide()">&#10095;</button>
+    </div>
+  </section>
+
+  <section id="team" class="slide">
+    <h2>Meet the Team/Our Mission Section</h2>
+    <p>
+      We’re a group of passionate experts committed to delivering high-quality
+      IT solutions.
+    </p>
+    <img src="assets/team.jpg" alt="Our Team" />
   </section>
 
   <!-- contact us section -->
-  <section id="contact" class="slide contact-section">
+  <section id="contact" class="slide contact-section bg-lightblue">
     <div class="contact-container">
       <!-- LEFT SIDE: Social Media + Contact -->
       <div class="contact-left">
@@ -81,7 +167,9 @@
         <div class="social-icons">
           <a href="#"><i class="fab fa-twitter"></i></a>
           <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          <a href="mailto:info@acumentechnologies.co.in"><i class="fas fa-envelope"></i></a>
+          <a href="mailto:info@acumentechnologies.co.in"
+            ><i class="fas fa-envelope"></i
+          ></a>
           <a href="#"><i class="fab fa-facebook-f"></i></a>
         </div>
       </div>
